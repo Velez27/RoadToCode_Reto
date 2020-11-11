@@ -7,6 +7,88 @@
     <title>Fila de Turnos</title>
 </head>
 <body>
+    <header>
+        <h1>Fila de Turnos</h1>
+    </header>
+    <main>
+        <article>
+            <section class="main_tittle">
+                <h4>Opciones</h4>
+            </section>
+            <section class="main_registrar">
+                <button id="registrar_cliente">Registrar Cliente</button>
+                <section id="main_seccion--registrar" class="main_registro--cliente" hidden>
+                    <h5>Registro de Clientes</h5>
+                    <form action="">
+                        <label for="id_registrar">
+                            <span>No. de Identificacion</span>
+                            <input id="id_registrar" type="text">
+                        </label>
+                        <label for="nombre_registrar">
+                            <span>Nombre(s)</span>
+                            <input id="nombre_registrar" type="text">
+                        </label>
+                        <label for="apellido_registrar">
+                            <span>Apellidos</span>
+                            <input id="apellido_registrar" type="text">
+                        </label>
+                        <label for="genero_registrar">
+                            <span>Genero</span>
+                                <select name="" id="genero_registrar">
+                                    <option value="Hombre">Hombre</option>
+                                    <option value="Mujer">Mujer</option>
+                                </select>
+                        </label>
+                        <label for="edad_registrar">
+                            <span>Edad</span>
+                            <input id="edad_registrar" type="number">
+                        </label>
+                        <label for="tipo_registrar">
+                            <span>Tipo de Cliente</span>
+                            <select name="" id="tipo_registrar">
+                                <option value="Basico">Basico</option>
+                                <option value="Premiun">Premiun</option>
+                                <option value="VIP">VIP</option>
+                            </select>
+                        </label>
+                        <label for="button_registrar--enviar">
+                            <input id="button_registrar--enviar" type="button" value="Enviar">
+                        </label>
+                    </form>
+                </section>
+            </section>
+            <section class="main_solicitar">
+                <button id="solicitar_turno">Solicitar Turno</button>
+                <section id="main_seccion--solicitar--turno" class="main_solicitar--turno" hidden>
+                    <form action="">
+                        <label for="">
+                            <span>No. de Identificacion</span>
+                            <input type="text">
+                        </label>
+                        <label for="">
+                            <input type="submit" value="Enviar">
+                        </label>
+                    </form>
+                    <span id="turno_asignado"></span>
+                </section>
+            </section>
+            <section>
+                <button id="atender_cliente">Atender Cliente</button>
+                <span id="cliente_atendido"></span>
+            </section>
+            <section>
+                <button id="mostrar_clientes_espera">Ver lista de Clientes en Espera</button>
+                <span id="lista_clientes_espera"></span>
+            </section>
+            <section>
+                <button id="mostrar_clientes_atendidos">Ver lista de Clientes Atendidos</button>
+                <span id="lista_clientes_atendidos"></span>
+            </section>
+        </article>
+    </main>
+    <footer>
+        <h5>Road To Code - Reto</h5>
+    </footer>
     <script src="./js/app.js"></script>
 </body>
 </html>
