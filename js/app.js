@@ -26,6 +26,7 @@ function Cliente(identificacion, nombre, apellido, genero, edad, tipoUsuario){
 let buttonRegistrar = document.getElementById('registrar_cliente');
 let buttonRegistrarEnviar = document.getElementById('button_registrar--enviar');
 let buttonSolicitarTurno = document.getElementById('solicitar_turno');
+let buttonSolicitarTurnoEnviar = document.getElementById('button_solicitar--turno');
 let buttonAtenderCliente = document.getElementById('atender_cliente');
 let buttonListarClientesEnEspera = document.getElementById('mostrar_clientes_espera');
 let buttonListarClientesAtendidos = document.getElementById('mostrar_clientes_atendidos');
@@ -39,6 +40,7 @@ let generoRegistrar = document.getElementById('genero_registrar');
 let edadRegistrar = document.getElementById('edad_registrar');
 let tipoRegistrar = document.getElementById('tipo_registrar');
 let menuSolicitarTurno = document.getElementById('main_seccion--solicitar--turno');
+let mostrarClienteAtendido = document.getElementById('cliente_atendido');
 let menuListarClientesEnEspera = document.getElementById('main_seccion_listar--clientes--espera');
 let listaClientesEnEspera = document.getElementById('lista_clientes_espera');
 let menuListarClientesAtendidos = document.getElementById('main_seccion--listar--clientes--atendidos');
@@ -117,9 +119,21 @@ buttonRegistrarEnviar.addEventListener('click', () => {
 buttonSolicitarTurno.addEventListener('click', () => {
     desplegarMenus(menuSolicitarTurno);
 });
-buttonAtenderCliente.addEventListener('click', () => {
 
+buttonSolicitarTurnoEnviar.addEventListener('click', () => {
+    
+})
+
+buttonAtenderCliente.addEventListener('click', () => {
+    if(arrayClientesEnEspera.length == 0){
+        alert('No hay clientes en espera');
+    }else {
+        let clienteAtendido = arrayClientesEnEspera.shift();
+        mostrarClienteAtendido.innerHTML = `ID: ${clienteAtendido.identificacion} - Nombre Completo: ${clienteAtendido.nombre} ${clienteAtendido.apellido} - Genero: ${clienteAtendido.genero} - Edad: ${clienteAtendido.edad} - Tipo de Usuario: ${clienteAtendido.tipoUsuario}`;
+        arrayClientesAtendidos.push(clienteAtendido);
+    }
 });
+
 buttonListarClientesEnEspera.addEventListener('click', () => {
     desplegarMenus(menuListarClientesEnEspera, listaClientesEnEspera);
     listarClientes(listaClientesEnEspera, arrayClientesEnEspera);
