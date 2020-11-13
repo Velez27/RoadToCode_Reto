@@ -4,6 +4,8 @@ let arrayClientesEnEspera = [];
 let arrayClientesAtendidos = [];
 
 // Datos precargados para ejemplo
+arrayClientesRegistrados.push(new Cliente('JesuGut22', 'Jesus', 'Gutierrez', 'Hombre', 22, 'VIP'));
+arrayClientesRegistrados.push(new Cliente('PaolFlo30', 'Paola', 'Flores', 'Mujer', 30, 'Basico'));
 arrayClientesAtendidos.push(new Cliente('MariPer25', 'Maria', 'Peralta', 'Mujer', 25, 'VIP'));
 arrayClientesAtendidos.push(new Cliente('KarlHer29', 'Karla', 'Hernandez', 'Mujer', 29, 'Premiun'));
 arrayClientesAtendidos.push(new Cliente('JoseAnc27', 'Jose', 'Ancona', 'Hombre', 27, 'Basico'));
@@ -55,11 +57,33 @@ function desplegarMenus(menu, elementos){
     }
 }
 
-function listarClientes(elementoLista, arrayClientes){
+function verificarCamposVacios(){
+    if(idRegistrar.value == '' || nombreRegistrar.value == '' || apellidoRegistrar.value == '' || edadRegistrar.value == ''){
+        return true;
+    }else{
+        return false;
+    }
+}
+
+function verificarClientesExistentes(arrayClientes){
     for(let i = 0; i < arrayClientes.length; i++){
-        let item = document.createElement('li');
+        if(arrayClientes[i].identificacion == idRegistrar.value){
+            return true;
+        }else{
+            return false;
+        }
+    }
+}
+
+function listarClientes(elementoLista, arrayClientes){
+    let encabezados = document.createElement('tr');
+    elementoLista.appendChild(encabezados);
+    encabezados.innerHTML = `<th>No.</th> <th>ID</th> <th>Nombre Completo</th> <th>Genero</th> <th>Edad</th> <th>Tipo de Usuario</th>`;
+    
+    for(let i = 0; i < arrayClientes.length; i++){
+        let item = document.createElement('tr');
         elementoLista.appendChild(item);
-        item.innerHTML = arrayClientes[i].nombre;
+        item.innerHTML = ` <td> ${i + 1} </td> <td> ${arrayClientes[i].identificacion} </td> <td> ${arrayClientes[i].nombre} ${arrayClientes[i].apellido} </td> <td> ${arrayClientes[i].genero} </td> <td> ${arrayClientes[i].edad} </td> <td> ${arrayClientes[i].tipoUsuario} </td>`;
     }
 }
 
@@ -77,11 +101,16 @@ buttonRegistrar.addEventListener('click', () => {
 });
 
 buttonRegistrarEnviar.addEventListener('click', () => {
-    let camposVacios = false; //Funcion para verificar los campos
+    let camposVacios = verificarCamposVacios();
+    let clienteExistente = verificarClientesExistentes(arrayClientesRegistrados);
     if(camposVacios == true){
-
+        alert('Por favor rellena todos los campos');
     }else{
-        arrayClientesRegistrados.push(new Cliente(idRegistrar.value, nombreRegistrar.value, apellidoRegistrar.value, generoRegistrar.value, edadRegistrar.value, tipoRegistrar.value));
+        if(clienteExistente == true){
+            alert('El cliente ya esta registrado');
+        }else{
+            arrayClientesRegistrados.push(new Cliente(idRegistrar.value, nombreRegistrar.value, apellidoRegistrar.value, generoRegistrar.value, edadRegistrar.value, tipoRegistrar.value));
+        }
     }
 });
 
