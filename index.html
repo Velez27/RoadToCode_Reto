@@ -61,12 +61,19 @@
                 <button id="solicitar_turno">Solicitar Turno</button>
                 <section id="main_seccion--solicitar--turno" class="main_solicitar--turno" hidden>
                     <form action="">
-                        <label for="">
+                        <label for="id_solicitar--turno--enviar">
                             <span>No. de Identificacion</span>
-                            <input type="text">
+                            <input id="id_solicitar--turno--enviar" type="text">
                         </label>
                         <label for="">
-                            <input id="button_solicitar--turno" type="submit" value="Enviar">
+                            <span>Tipo de Cliente</span>
+                            <select name="" id="tipo_cliente">
+                                <option value="Nuevo">Nuevo</option>
+                                <option value="Registrado">Registrado</option>
+                            </select>
+                        </label>
+                        <label for="button_solicitar--turno">
+                            <input id="button_solicitar--turno" type="button" value="Enviar">
                         </label>
                     </form>
                     <span id="turno_asignado"></span>
