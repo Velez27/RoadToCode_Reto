@@ -6,6 +6,8 @@ let arrayClientesAtendidos = [];
 // Datos precargados para ejemplo
 arrayClientesRegistrados.push(new Cliente('JesuGut22', 'Jesus', 'Gutierrez', 'Hombre', 22, 'VIP', '-'));
 arrayClientesRegistrados.push(new Cliente('PaolFlo30', 'Paola', 'Flores', 'Mujer', 30, 'Basico', '-'));
+arrayClientesRegistrados.push(new Cliente('MariPer25', 'Maria', 'Peralta', 'Mujer', 25, 'VIP', 'VI1', '-'));
+arrayClientesRegistrados.push(new Cliente('PepeMor28', 'Pepe', 'Morelos', 'Hombre', 28, 'Premiun', 'PR1', '-'));
 arrayClientesAtendidos.push(new Cliente('MariPer25', 'Maria', 'Peralta', 'Mujer', 25, 'VIP', 'VI0'));
 arrayClientesAtendidos.push(new Cliente('KarlHer29', 'Karla', 'Hernandez', 'Mujer', 29, 'Premiun', 'PR0'));
 arrayClientesAtendidos.push(new Cliente('JoseAnc27', 'Jose', 'Ancona', 'Hombre', 27, 'Basico', 'BA0'));
@@ -43,6 +45,7 @@ let tipoRegistrar = document.getElementById('tipo_registrar');
 let menuSolicitarTurno = document.getElementById('main_seccion--solicitar--turno');
 let noIdentificacionSolicitarTurno = document.getElementById('id_solicitar--turno--enviar');
 let tipoCliente = document.getElementById('tipo_cliente');
+let turnoAsignado = document.getElementById('turno_asignado');
 let mostrarClienteAtendido = document.getElementById('cliente_atendido');
 let menuListarClientesEnEspera = document.getElementById('main_seccion_listar--clientes--espera');
 let listaClientesEnEspera = document.getElementById('lista_clientes_espera');
@@ -87,7 +90,7 @@ function comprobarCliente(arrayClientes, elemento){
 }
 
 // Variables Globales
-let basico = 2;
+let basico = 1;
 let premiun = 2;
 let vip = 2;
 let noRegistrado = 0;
@@ -100,15 +103,38 @@ function generarTurno(tipoUsuario){
             return `PR${premiun++}`;
         case 'VIP':
             return `VI${vip++}`;
-        case 'Cliente No Registrado':
+        case 'No Registrado':
             return `NR${noRegistrado++}`;
         default:
             break;
     }
 }
 
-function ordenarClientesEnEspera(idCliente){
+function clasificarClientes(arrayClientes, tipo){
+    let arrayClasificado = [];
+    for(let i = 0; i < arrayClientes.length; i++){
+        if(arrayClientes[i].tipoUsuario == tipo){
+            arrayClasificado.push(arrayClientes[i]);
+        }
+    }
+    return arrayClasificado;
+}
 
+function ordenarClientesPorEdad(arrayClientes){
+    arrayClientes.sort((a, b) => b.edad - a.edad);
+    return arrayClientes;
+}
+
+function ordenarClientesEnEspera(){
+    let basico = clasificarClientes(arrayClientesEnEspera, 'Basico');
+    let premiun = clasificarClientes(arrayClientesEnEspera, 'Premiun');
+    let vip = clasificarClientes(arrayClientesEnEspera, 'VIP');
+    let noRegistrado = clasificarClientes(arrayClientesEnEspera, 'No Registrado');
+    ordenarClientesPorEdad(basico);
+    ordenarClientesPorEdad(premiun);
+    ordenarClientesPorEdad(vip);
+    arrayClientesEnEspera = [];
+    arrayClientesEnEspera = arrayClientesEnEspera.concat(vip, premiun, basico, noRegistrado);
 }
 
 function listarClientes(elementoLista, arrayClientes){
@@ -169,11 +195,19 @@ buttonSolicitarTurnoEnviar.addEventListener('click', () => {
                 let turno = generarTurno(cliente.tipoUsuario);
                 cliente.turno = turno;
                 arrayClientesEnEspera.push(cliente);
+                turnoAsignado.innerHTML = `Su turno es: ${turno}`;
+                ordenarClientesEnEspera();
+                limpiarListaClientes(listaClientesEnEspera);
+                listarClientes(listaClientesEnEspera, arrayClientesEnEspera);
             }
             if(clienteExistente == null && tipoCliente.value == 'Nuevo'){
-                let clienteNoRegistrado = 'Cliente No Registrado';
+                let clienteNoRegistrado = 'No Registrado';
                 let clienteNoRegistradoTurno = generarTurno(clienteNoRegistrado);
-                arrayClientesEnEspera.push(new Cliente(noIdentificacionSolicitarTurno.value, '-', '-', '-', 0, clienteNoRegistrado, clienteNoRegistradoTurno));
+                arrayClientesEnEspera.push(new Cliente(noIdentificacionSolicitarTurno.value, 'Cliente', 'Sin Registrar', '-', 0, clienteNoRegistrado, clienteNoRegistradoTurno));
+                turnoAsignado.innerHTML = `Su turno es: ${clienteNoRegistradoTurno}`;
+                ordenarClientesEnEspera();
+                limpiarListaClientes(listaClientesEnEspera);
+                listarClientes(listaClientesEnEspera, arrayClientesEnEspera);
             }
             if(clienteExistente == true && tipoCliente.value == 'Nuevo'){
                 alert(`${noIdentificacionSolicitarTurno.value} ya esta registrado, cambie el tipo de cliente para continuar`);
