@@ -16,3 +16,16 @@ Restricciones de prioridad
   1.-El orden de prioridad de los clientes es: VIP -> Premium -> Básico.
   2.-Si dos clientes del mismo tipo solicitan turno, sele da prioridad al de mayor edad. Si tienen la misma edad se le asigna turno primero al primero en llegar.
   3.-Los clientes nuevos (no registrados) tienen la menor prioridad. Si 2 clientes nuevos de la misma edad solicitan turno, se le da prioridad al primero en llegar.
+
+
+// Datos precargados para ejemplo
+// No. Identificacion, Nombre, Apellido, Genero, Edad, Tipo de Usuario, Turno.
+arrayClientesRegistrados.push(new Cliente('JesuGut22', 'Jesus', 'Gutierrez', 'Hombre', 22, 'VIP', '-'));
+arrayClientesRegistrados.push(new Cliente('PaolFlo30', 'Paola', 'Flores', 'Mujer', 30, 'Basico', '-'));
+arrayClientesRegistrados.push(new Cliente('MariPer25', 'Maria', 'Peralta', 'Mujer', 25, 'VIP', 'VI1', '-'));
+arrayClientesRegistrados.push(new Cliente('PepeMor28', 'Pepe', 'Morelos', 'Hombre', 28, 'Premiun', 'PR1', '-'));
+arrayClientesAtendidos.push(new Cliente('MariPer25', 'Maria', 'Peralta', 'Mujer', 25, 'VIP', 'VI0'));
+arrayClientesAtendidos.push(new Cliente('KarlHer29', 'Karla', 'Hernandez', 'Mujer', 29, 'Premiun', 'PR0'));
+arrayClientesAtendidos.push(new Cliente('JoseAnc27', 'Jose', 'Ancona', 'Hombre', 27, 'Basico', 'BA0'));
+arrayClientesEnEspera.push(new Cliente('MariPer25', 'Maria', 'Peralta', 'Mujer', 25, 'VIP', 'VI1'));
+arrayClientesEnEspera.push(new Cliente('PepeMor28', 'Pepe', 'Morelos', 'Hombre', 28, 'Premiun', 'PR1'));
