@@ -224,8 +224,8 @@ buttonAtenderCliente.addEventListener('click', () => {
         alert('No hay clientes en espera');
     }else {
         let clienteAtendido = arrayClientesEnEspera.shift();
-        mostrarClienteAtendido.innerHTML = `ID: ${clienteAtendido.identificacion} - Nombre Completo: ${clienteAtendido.nombre} ${clienteAtendido.apellido} - Genero: ${clienteAtendido.genero} - Edad: ${clienteAtendido.edad} - Tipo de Usuario: ${clienteAtendido.tipoUsuario}`;
-        arrayClientesAtendidos.push(clienteAtendido);
+        mostrarClienteAtendido.innerHTML = `ID: ${clienteAtendido.identificacion} <br> Nombre Completo: ${clienteAtendido.nombre} ${clienteAtendido.apellido} <br> Genero: ${clienteAtendido.genero} <br> Edad: ${clienteAtendido.edad} <br> Tipo de Usuario: ${clienteAtendido.tipoUsuario}`;
+         arrayClientesAtendidos.push(clienteAtendido);
         limpiarListaClientes(listaClientesEnEspera);
         listarClientes(listaClientesEnEspera, arrayClientesEnEspera);
         limpiarListaClientes(listaClientesAtendidos);

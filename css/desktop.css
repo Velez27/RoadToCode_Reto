@@ -1,0 +1,48 @@
+body{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 5rem 1fr 3rem;
+    grid-template-areas: "header header header"
+                         "main main main"
+                         "footer footer footer";
+    
+}
+
+header{
+    grid-area: header;
+    text-align: center;
+}
+
+article{
+    grid-area: main;
+    text-align: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+    grid-template-areas: "registrar atenderTurnos listas";
+}
+
+.main_tittle{
+    display: none;
+}
+
+.main_registrar{
+    grid-area: registrar;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.main_solicitar, .main_atender {
+    grid-area: atenderTurnos;
+}
+
+.main_listar--clientes--atendidos, .main_listar--clientes--espera{
+    grid-area: listas;
+}
+
+footer{
+    grid-area: footer;
+    text-align: center;
+    padding: 1rem;
+}

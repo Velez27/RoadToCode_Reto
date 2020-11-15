@@ -1,0 +1,61 @@
+body{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 12vw 1fr 8vw;
+}
+
+header{
+    text-align: center;
+}
+
+main{
+    text-align: center;
+}
+
+main button {
+    width: 30rem;
+    height: 3rem;
+    margin: 1rem;
+}
+
+.main_registrar, .main_solicitar{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.main_registro--cliente form, .main_solicitar--turno form{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+#button_registrar--enviar, #button_solicitar--turno{
+    width: 8rem;
+    height: 2.3rem;
+}
+
+#cliente_atendido{
+    display: block;
+}
+
+.main_listar--clientes--espera, .main_listar--clientes--atendidos{
+    display: inline-block;
+    justify-content: center;
+} 
+
+#lista_clientes_espera, #lista_clientes_atendidos{
+    text-align: center;
+    border: black solid .1rem;
+    font-size: 1.2rem;
+}
+
+#lista_clientes_espera, #lista_clientes_atendidos td{
+    padding: .1rem;
+}
+
+
+footer{
+    text-align: center;
+    padding: 1rem;
+}

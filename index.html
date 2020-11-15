@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="./css/mobile.css" media="screen and (min-width: 300px)">
+    <link rel="stylesheet" href="./css/desktop.css" media="screen and (min-width: 640px">
     <title>Fila de Turnos</title>
 </head>
 <body>
@@ -79,17 +81,17 @@
                     <span id="turno_asignado"></span>
                 </section>
             </section>
-            <section>
+            <section class="main_atender">
                 <button id="atender_cliente">Atender Cliente</button>
                 <span id="cliente_atendido"></span>
             </section>
-            <section>
+            <section class="main_listar--clientes--espera">
                 <button id="mostrar_clientes_espera">Ver lista de Clientes en Espera</button>
                 <section id="main_seccion_listar--clientes--espera" hidden>
                     <table id="lista_clientes_espera"></table>
                 </section>
             </section>
-            <section>
+            <section class="main_listar--clientes--atendidos">
                 <button id="mostrar_clientes_atendidos">Ver lista de Clientes Atendidos</button>
                 <section id="main_seccion--listar--clientes--atendidos" hidden>
                     <table id="lista_clientes_atendidos"></table>

@@ -1,0 +1,22 @@
+:root{
+    --primary-color: #d1d8e0;
+    --secundary-color: #263238;
+    --header-color:#4b6584;
+    --footer-color: #778ca3;
+    --body-color: #d1d8e0;
+}
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html{
+    font-size: 62.5%;
+}
+
+body{
+    font-size: 2rem;
+    background-color: var(--body-color);
+}
