@@ -5,7 +5,9 @@ body{
     grid-template-areas: "header header header"
                          "main main main"
                          "footer footer footer";
-    
+    padding: .2rem;
+    width: 100%;
+    height: 100%;
 }
 
 header{
@@ -13,13 +15,24 @@ header{
     text-align: center;
 }
 
-article{
+main{
     grid-area: main;
+}
+
+article{
     text-align: center;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr;
-    grid-template-areas: "registrar atenderTurnos listas";
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas: "column1 column1 column3 column2 column2"
+                         "column4 column4 column3 column5 column5";
+    justify-items: center;
+}
+
+
+main button {
+    width: 24rem;
+    height: 3rem;
 }
 
 .main_tittle{
@@ -27,18 +40,33 @@ article{
 }
 
 .main_registrar{
-    grid-area: registrar;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    grid-area: column1;
 }
 
-.main_solicitar, .main_atender {
-    grid-area: atenderTurnos;
+.main_solicitar{
+    grid-area: column2;
 }
 
-.main_listar--clientes--atendidos, .main_listar--clientes--espera{
-    grid-area: listas;
+.main_atender {
+    grid-area: column3;
+}
+
+.main_listar--clientes--espera{
+    grid-area: column4;
+}
+
+.main_listar--clientes--atendidos{
+    grid-area: column5;
+}
+
+#lista_clientes_espera, #lista_clientes_atendidos{
+    text-align: center;
+    border: black solid .1rem;
+    font-size: 2rem;
+}
+
+#lista_clientes_espera td, #lista_clientes_atendidos td{
+    padding: .5rem;
 }
 
 footer{

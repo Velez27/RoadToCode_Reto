@@ -50,7 +50,7 @@ main button {
     font-size: 1.2rem;
 }
 
-#lista_clientes_espera, #lista_clientes_atendidos td{
+#lista_clientes_espera td, #lista_clientes_atendidos td{
     padding: .1rem;
 }
 
